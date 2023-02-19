@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:layout_width="match_parent"
+    tools:context=".view.ui.MainActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/Appbar"
@@ -32,8 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:cardBackgroundColor="@android:color/white"
-        android:cardCornerRadius="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:elevation="100dp"
@@ -60,7 +63,7 @@
                 android:id="@+id/icon_cash"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/ic_cash"
+                android:src="@drawable/ic_debit"
                 app:layout_constraintBottom_toBottomOf="@+id/datePayment"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/parcels" />
@@ -289,8 +292,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:cardBackgroundColor="@android:color/white"
-        android:cardCornerRadius="8dp"
         app:layout_constraintTop_toBottomOf="@id/cardview"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -383,7 +384,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
-                android:text="Reduzido para R$ 169,40"
+                android:text="Saldo insuficiente para pagar."
                 android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@id/iconCash1"
                 app:layout_constraintTop_toBottomOf="@id/valueParcel1" />
@@ -410,8 +411,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:cardBackgroundColor="@android:color/white"
-        android:cardCornerRadius="8dp"
         app:layout_constraintTop_toBottomOf="@id/cardviewParcels"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -419,76 +418,86 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:padding="8dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="8dp">
 
-        <TextView
-            android:id="@+id/paymentTitle"
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="Pagamentos"
-            android:textColor="#567393"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/iconPayment"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_cash"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/paymentTitle" />
-
-        <TextView
-            android:id="@+id/paymentWayTitle"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:layout_marginTop="10dp"
-            android:text="R$ 1.250,63"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@id/iconPayment"
-            app:layout_constraintTop_toBottomOf="@id/paymentTitle" />
-
-        <TextView
-            android:id="@+id/valuePayment"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:text="Reduzido para R$ 169,40"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@id/iconPayment"
-            app:layout_constraintTop_toBottomOf="@id/paymentWayTitle" />
+            <TextView
+                android:id="@+id/paymentTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Pagamentos"
+                android:textColor="#567393"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        <TextView
-            android:id="@+id/datePaymentGeneral"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="16/10/2018"
-            app:layout_constraintBottom_toBottomOf="@+id/paymentWayTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/paymentWayTitle" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                app:layout_constraintTop_toBottomOf="@id/paymentTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/addPaymentWay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="ADICIONAR PAGAMENTO"
                 android:textColor="#567393"
                 android:textStyle="bold"
-                android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/valuePayment" />
+                app:layout_constraintTop_toBottomOf="@id/recycler_view" />
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:hint="Valor do pagamento"
+                app:layout_constraintTop_toBottomOf="@id/addPaymentWay">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/component_rounded_border_2dp_gray"
+                    android:inputType="number"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                app:layout_constraintTop_toBottomOf="@id/inputLayoutValue"
+                android:id="@+id/menuSpinnerPaymentWay"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/component_rounded_border_2dp_gray"
+                android:entries="@array/opcoes"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonInsertPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inserir"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/menuSpinnerPaymentWay"
+                app:backgroundTint="#567393"
+                app:cornerRadius="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
