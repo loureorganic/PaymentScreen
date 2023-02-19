@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements PaymentView {
     @Override
     public void setRestValue(double value) {
         binding.valueRestPaymentValue.setText("R$" + value);
+        binding.alertPaymentValue.setText("R$" + value);
     }
 
     @Override
@@ -104,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements PaymentView {
 
     @Override
     public void setDebitValue(double value) { binding.totalPaymentValue.setText("R$" + value);}
-
 
 
     @Override

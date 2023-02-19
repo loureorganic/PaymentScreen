@@ -495,9 +495,59 @@
                 android:textColor="#fff"
                 android:textSize="16sp"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+            <View
+                android:id="@+id/dividerPayment"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/buttonInsertPayment"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/alertPayment"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="Pepino após pagamentos"
+                android:textColor="#0f0f0f"
+                app:layout_constraintTop_toBottomOf="@id/dividerPayment" />
+
+            <TextView
+                android:id="@+id/alertPaymentValue"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="R$ 00,0"
+                android:textColor="#FF0000"
+                app:layout_constraintTop_toBottomOf="@id/alertPayment" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonFinish"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Concluir"
+        android:layout_marginTop="10dp"
+        android:textColor="#fff"
+        android:textSize="16sp"
+        android:visibility="visible"
+        app:backgroundTint="#567393"
+        app:cornerRadius="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardViewPay" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
